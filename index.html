@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Leo Cabart, data analyst</title>
+<meta name="description" content="Portfolio de Leo Cabart, data analyst Client Insights à Paris : projets d'analyse, de business intelligence, de machine learning et d'IA générative.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F5F7F6;--ink:#17233B;--muted:#56627A;--line:#D5DBE3;--accent:#1F6F5C;--dot:#E0A43A;--panel:#FFFFFF;
+--serif:"Newsreader",Georgia,serif;--sans:"Public Sans",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--paper:#121A26;--ink:#E7ECF3;--muted:#A3AFC2;--line:#2C3A4F;--accent:#5CC2A6;--dot:#F0B95A;--panel:#18222F}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible{outline:3px solid var(--dot);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+nav{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:28px;align-items:center;height:56px;overflow-x:auto;white-space:nowrap}
+nav strong{font-family:var(--serif);font-size:20px;font-weight:600;margin-right:auto}
+nav a{color:var(--ink);text-decoration:none;font-size:15px}nav a:hover{color:var(--accent)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.01em;line-height:1.15}
+header.hero{padding-top:64px;padding-bottom:24px}
+.hero h1{font-size:clamp(40px,6vw,68px);margin:0 0 18px;max-width:14ch}
+.hero .lede{font-size:21px;line-height:1.5;color:var(--muted);max-width:60ch;margin:0 0 10px}
+.hero .lede b{color:var(--ink);font-weight:600}
+.hero .links{display:flex;gap:22px;flex-wrap:wrap;margin:22px 0 0;font-weight:600}
+.chart{margin:40px 0 8px;overflow-x:auto}
+.chart svg{min-width:720px;width:100%;height:auto;display:block}
+.chart .grid{stroke:var(--line);stroke-width:1}
+.chart .tick{stroke:var(--line);stroke-dasharray:2 4}
+.chart .dom{font:14px var(--sans);fill:var(--muted)}
+.chart .month{font:13px var(--sans);fill:var(--muted)}
+.chart .trail{fill:none;stroke:var(--ink);stroke-opacity:.35;stroke-width:1.5}
+.chart .pt circle{fill:var(--panel);stroke:var(--ink);stroke-width:2}
+.chart .pt.feat circle{fill:var(--dot);stroke:var(--ink)}
+.chart a:hover circle,.chart a:focus circle{fill:var(--accent);stroke:var(--accent)}
+.chart-note{font-size:14px;color:var(--muted);margin:0 0 24px}
+main>section{padding-top:56px;padding-bottom:56px;border-top:1px solid var(--line)}
+section>h2{font-size:clamp(30px,4vw,40px);margin:0 0 10px}
+section>.intro{color:var(--muted);max-width:62ch;margin:0 0 36px;font-size:18px}
+.case{padding:0 0 56px;margin-bottom:56px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);grid-template-areas:'head head' 'story fig' 'link fig';gap:12px 48px;scroll-margin-top:72px}
+.case-head{grid-area:head}.story{grid-area:story}.case figure{grid-area:fig;position:sticky;top:76px}.repo-link{grid-area:link}
+.case:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.case h3{font-size:clamp(25px,3vw,32px);margin:0 0 6px;max-width:30ch}
+.case .meta{color:var(--muted);margin:0 0 14px;font-size:15px}
+.case figure{margin:0;align-self:start}
+.case img{width:100%;height:auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+.story{margin:0;display:grid;grid-template-columns:8.5em 1fr;gap:10px 18px}
+.story dt{font-weight:600;font-size:15px;padding-top:2px}
+.story dd{margin:0;max-width:60ch}
+.repo-link{margin:8px 0 0;font-weight:600}
+.others{list-style:none;margin:0;padding:0}
+.others li{display:grid;grid-template-columns:10em 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--line);scroll-margin-top:72px}
+.others li:first-child{border-top:0}
+.others .when{margin:0;color:var(--muted);font-size:15px;padding-top:4px}
+.others h3{font-size:22px;margin:0 0 6px}.others h3 a{color:var(--ink)}.others h3 a:hover{color:var(--accent)}
+.others p{margin:0;max-width:66ch}.others .stack{color:var(--muted);font-size:15px;margin-top:6px}
+.matrix-wrap{overflow-x:auto}
+.matrix{border-collapse:collapse;width:100%;min-width:760px;font-size:15px}
+.matrix caption{text-align:left;color:var(--muted);padding-bottom:12px;caption-side:top}
+.matrix th,.matrix td{padding:9px 6px;border-bottom:1px solid var(--line);text-align:center}
+.matrix thead th{font-weight:600}.matrix thead a{color:var(--ink);text-decoration:none}.matrix thead a:hover{color:var(--accent)}
+.matrix tbody th{text-align:left;font-weight:500;padding-right:16px}
+.matrix thead th:first-child{text-align:left}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.veille{display:grid;grid-template-columns:1fr 1fr;gap:40px 56px}
+.veille h3{font-size:24px;margin:0 0 12px}
+.steps{margin:0;padding-left:1.4em}.steps li{margin:0 0 12px;padding-left:4px}.steps li::marker{font-family:var(--serif);font-weight:600;color:var(--accent)}
+.steps b{display:block}
+.subs{list-style:none;margin:0;padding:0}
+.subs li{padding:8px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px}
+.subs li span:last-child{color:var(--muted);text-align:right}
+.wins{grid-column:1/-1;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:28px 32px}
+.wins ul{margin:0;padding-left:1.2em}.wins li{margin:0 0 10px;max-width:80ch}
+.next{grid-column:1/-1;color:var(--muted);max-width:75ch;margin:0}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:40px}
+.about p{max-width:62ch;margin:0 0 14px}
+.facts{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;align-content:start}
+.facts dt{color:var(--muted)}.facts dd{margin:0}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--muted);font-size:15px}
+@media (max-width:760px){
+ body{font-size:16px}.wrap{padding:0 16px}
+ header.hero{padding-top:40px;padding-bottom:12px}.hero .lede{font-size:19px}
+ nav .wrap{gap:18px}
+ .chart{direction:rtl}.chart svg{direction:ltr;min-width:600px}
+ .case{grid-template-columns:1fr;grid-template-areas:'head' 'fig' 'story' 'link'}.case figure{position:static}
+ .story{grid-template-columns:1fr;gap:2px}.story dd{margin-bottom:10px}
+ .others li{grid-template-columns:1fr;gap:4px}
+ .veille,.about{grid-template-columns:1fr}
+ .wins{padding:22px 20px}
+}
+@media print{
+ nav{display:none}.chart{overflow:visible;direction:ltr}.chart svg{min-width:0}.case figure{position:static}
+ .case{break-inside:auto}.case-head,.others li,.matrix tr,.wins,.steps li{break-inside:avoid}h2,h3{break-after:avoid}
+ main>section{padding-top:28px;padding-bottom:28px}
+ a{color:var(--ink)}body{background:#fff}
+}
+</style>
+</head>
+<body>
+<nav aria-label="Sections"><div class="wrap"><strong>Leo Cabart</strong>
+<a href="#projets">Projets</a><a href="#autres">Autres projets</a><a href="#competences">Compétences</a><a href="#veille">Veille</a><a href="#profil">Profil</a></div></nav>
+<main>
+<header class="hero wrap">
+<h1>Des chiffres justes, puis une décision.</h1>
+<p class="lede">Je suis <b>data analyst Client Insights</b> chez Louis Vuitton, à Paris. Je transforme des données clients et ventes en indicateurs fiables et en recommandations que les équipes métier peuvent appliquer.</p>
+<p class="lede">Je travaille au quotidien avec BigQuery, Power BI et Python. Ce portfolio rassemble treize projets, du tableur à l'IA générative.</p>
+<p class="links"><a href="#projets">Voir les projets</a><a href="https://github.com/lcabart21">GitHub</a></p>
+<div class="chart" aria-describedby="chart-note"><svg viewBox="0 0 940 330" role="img" aria-labelledby="tl-title tl-desc">
+<title id="tl-title">Mes projets dans le temps, par domaine</title>
+<desc id="tl-desc">Treize projets entre mai 2025 et octobre 2026, qui passent du tableur et du SQL à la business intelligence, au machine learning puis à l'IA générative.</desc>
+<line class="grid" x1="170" x2="920" y1="24.0" y2="24.0"/>
+<text class="dom" x="156" y="28.0" text-anchor="end">Tableur et reporting</text>
+<line class="grid" x1="170" x2="920" y1="67.7" y2="67.7"/>
+<text class="dom" x="156" y="71.7" text-anchor="end">SQL et modélisation</text>
+<line class="grid" x1="170" x2="920" y1="111.3" y2="111.3"/>
+<text class="dom" x="156" y="115.3" text-anchor="end">Python et analyse</text>
+<line class="grid" x1="170" x2="920" y1="155.0" y2="155.0"/>
+<text class="dom" x="156" y="159.0" text-anchor="end">Business intelligence</text>
+<line class="grid" x1="170" x2="920" y1="198.7" y2="198.7"/>
+<text class="dom" x="156" y="202.7" text-anchor="end">Data engineering</text>
+<line class="grid" x1="170" x2="920" y1="242.3" y2="242.3"/>
+<text class="dom" x="156" y="246.3" text-anchor="end">Statistiques et ML</text>
+<line class="grid" x1="170" x2="920" y1="286.0" y2="286.0"/>
+<text class="dom" x="156" y="290.0" text-anchor="end">IA générative</text>
+<line class="tick" x1="247.2" x2="247.2" y1="16" y2="294"/>
+<text class="month" x="247.2" y="316" text-anchor="middle">juin 2025</text>
+<line class="tick" x1="401.5" x2="401.5" y1="16" y2="294"/>
+<text class="month" x="401.5" y="316" text-anchor="middle">oct. 2025</text>
+<line class="tick" x1="557.0" x2="557.0" y1="16" y2="294"/>
+<text class="month" x="557.0" y="316" text-anchor="middle">fév. 2026</text>
+<line class="tick" x1="708.8" x2="708.8" y1="16" y2="294"/>
+<text class="month" x="708.8" y="316" text-anchor="middle">juin 2026</text>
+<line class="tick" x1="863.1" x2="863.1" y1="16" y2="294"/>
+<text class="month" x="863.1" y="316" text-anchor="middle">oct. 2026</text>
+<path class="trail" d="M225.6,111.3 L419.2,24.0 L458.4,67.7 L535.5,111.3 L610.1,67.7 L687.3,111.3 L755.6,155.0 L773.3,198.7 L827.7,242.3 L836.5,155.0 L841.6,242.3 L861.8,242.3 L877.0,286.0"/>
+<a href="https://github.com/lcabart21/perso-us-medical-insurance" class="pt"><title>Coûts d&#x27;assurance santé (projet personnel)</title><circle cx="225.6" cy="111.3" r="6"/></a>
+<a href="https://github.com/lcabart21/oc-p2-analyse-ventes-ecommerce" class="pt"><title>Ventes e-commerce (projet 2)</title><circle cx="419.2" cy="24.0" r="6"/></a>
+<a href="https://github.com/lcabart21/oc-p3-analyse-sql" class="pt"><title>Base assurance habitation (projet 3)</title><circle cx="458.4" cy="67.7" r="6"/></a>
+<a href="https://github.com/lcabart21/oc-p4-analyse-fao-sous-nutrition" class="pt"><title>Sous-nutrition mondiale (projet 4)</title><circle cx="535.5" cy="111.3" r="6"/></a>
+<a href="https://github.com/lcabart21/oc-p5-marche-immobilier-sql" class="pt"><title>Marché immobilier (projet 5)</title><circle cx="610.1" cy="67.7" r="6"/></a>
+<a href="https://github.com/lcabart21/oc-p6-bottleneck-analyse-stock-ventes" class="pt"><title>BottleNeck, version initiale (projet 6)</title><circle cx="687.3" cy="111.3" r="6"/></a>
+<a href="https://github.com/lcabart21/oc-p7-dashboard-powerbi-sanitoral" class="pt"><title>Portefeuille projets Sanitoral (projet 7)</title><circle cx="755.6" cy="155.0" r="6"/></a>
+<a href="#p8" class="pt feat"><title>Pipeline dbt et Snowflake (projet 8)</title><circle cx="773.3" cy="198.7" r="8"/></a>
+<a href="https://github.com/lcabart21/oc-p9-tendances-streaming-musical" class="pt"><title>Streaming musical (projet 9)</title><circle cx="827.7" cy="242.3" r="6"/></a>
+<a href="#p10" class="pt feat"><title>Accès à l&#x27;eau potable (projet 10)</title><circle cx="836.5" cy="155.0" r="8"/></a>
+<a href="#p11" class="pt feat"><title>Export de poulet bio (projet 11)</title><circle cx="841.6" cy="242.3" r="8"/></a>
+<a href="#p12" class="pt feat"><title>Faux billets (projet 12)</title><circle cx="861.8" cy="242.3" r="8"/></a>
+<a href="#p13" class="pt feat"><title>BottleNeck avec l&#x27;IA (projet 13)</title><circle cx="877.0" cy="286.0" r="8"/></a>
+</svg></div>
+<p class="chart-note" id="chart-note">Chaque point est un projet. Les points jaunes sont détaillés plus bas ; les autres renvoient au code sur GitHub.</p>
+</header>
+
+<section id="projets" class="wrap" aria-labelledby="h-projets">
+<h2 id="h-projets">Projets détaillés</h2>
+<p class="intro">Cinq projets choisis pour la variété des problèmes et des méthodes. Chacun suit le même fil : contexte, besoin, démarche, résultats, impact et limites.</p>
+
+<article class="case" id="p13">
+  <div class="case-head">
+    <h3>Reprendre une analyse avec l&#x27;IA, sans lui faire confiance aveuglément</h3>
+    <p class="meta">Projet 13, octobre 2026. Python, pandas, pandera, scikit-learn, Claude.</p>
+  </div>
+  <figure><img src="assets/p13.jpg" alt="Nuage de points prix de vente contre prix d&#x27;achat : un seul produit s&#x27;écarte de la diagonale" loading="lazy" width="1100"></figure>
+  <dl class="story">
+    <dt>Contexte</dt><dd>Mon analyse P6 des ventes et du stock d&#x27;un caviste en ligne devait servir à la direction, aux achats et à la logistique.</dd>
+    <dt>Besoin métier</dt><dd>Fiabiliser les indicateurs et distinguer les erreurs de prix des grands crus légitimement chers.</dd>
+    <dt>Démarche</dt><dd>J&#x27;ai utilisé l&#x27;IA comme relecteur, avec deux variantes de prompt notées sur une grille fixée à l&#x27;avance. J&#x27;ai comparé pandera et Great Expectations sur les mêmes règles, puis cinq méthodes de détection d&#x27;anomalies. Aucune proposition de l&#x27;IA n&#x27;a été adoptée sans être exécutée sur les vraies données.</dd>
+    <dt>Résultats</dt><dd>8 erreurs de calcul corrigées. Le prompt structuré en trouvait 8 sur 8, le prompt naïf 6, et son code plantait. Une seule anomalie de prix remonte, et c&#x27;est la vraie : Isolation Forest en signalait 22.</dd>
+    <dt>Impact</dt><dd>Les équipes reçoivent des indicateurs justes et une liste de corrections courte. La démarche est documentée et reproductible, avec un mini-plan de formation pour les métiers.</dd>
+    <dt>Limites</dt><dd>La période des ventes n&#x27;est pas connue (hypothèse : 12 mois). L&#x27;expérience IA repose sur une seule exécution par prompt.</dd>
+  </dl>
+  <p class="repo-link"><a href="https://github.com/lcabart21/oc-p13-bottleneck-ia">Voir le code et les livrables sur GitHub</a></p>
+</article>
+
+<article class="case" id="p12">
+  <div class="case-head">
+    <h3>Détecter les faux billets à partir de six mesures</h3>
+    <p class="meta">Projet 12, septembre 2026. scikit-learn, pipelines, validation croisée.</p>
+  </div>
+  <figure><img src="assets/p12.jpg" alt="Courbe du rappel et de la précision selon le seuil de décision" loading="lazy" width="1100"></figure>
+  <dl class="story">
+    <dt>Contexte</dt><dd>Un organisme de lutte contre le faux-monnayage scanne les billets et relève six dimensions géométriques.</dd>
+    <dt>Besoin métier</dt><dd>Prédire si un billet est faux, en priorité sans en laisser passer : un faux non détecté retourne en circulation.</dd>
+    <dt>Démarche</dt><dd>J&#x27;ai imputé les valeurs manquantes sans utiliser la cible, puis comparé quatre modèles en validation croisée. J&#x27;ai choisi le seuil sur les prédictions hors-pli, en donnant deux fois plus de poids au rappel, et livré un script de prédiction.</dd>
+    <dt>Résultats</dt><dd>98,4 % des faux détectés sur le jeu de test, et 97,6 % des alertes sont justes. J&#x27;ai retenu la régression logistique pour ses probabilités fiables et ses coefficients explicables.</dd>
+    <dt>Impact</dt><dd>Un outil utilisable tel quel sur un billet ou un fichier, avec une procédure de ré-entraînement quand les contrefaçons évoluent.</dd>
+    <dt>Limites</dt><dd>Deux faux ont les dimensions de vrais billets : il faudrait d&#x27;autres mesures (couleur, texture) pour les attraper.</dd>
+  </dl>
+  <p class="repo-link"><a href="https://github.com/lcabart21/oc-p12-detection-faux-billets">Voir le code et les livrables sur GitHub</a></p>
+</article>
+
+<article class="case" id="p10">
+  <div class="case-head">
+    <h3>Choisir où une ONG doit investir dans l&#x27;accès à l&#x27;eau</h3>
+    <p class="meta">Projet 10, septembre 2026. Power BI, Power Query, DAX.</p>
+  </div>
+  <figure><img src="assets/p10.jpg" alt="Page nationale du tableau de bord Power BI pour l&#x27;Éthiopie" loading="lazy" width="1100"></figure>
+  <dl class="story">
+    <dt>Contexte</dt><dd>Une ONG obtiendra un financement à investir dans un seul domaine (création de services, modernisation ou conseil), dans un pays à choisir.</dd>
+    <dt>Besoin métier</dt><dd>Descendre du monde au continent puis au pays, en excluant les pays trop instables.</dd>
+    <dt>Démarche</dt><dd>J&#x27;ai écrit un blueprint qui relie chaque besoin à une mesure, puis fait valider un mockup. J&#x27;ai corrigé six anomalies de données dans Power Query, construit un modèle en étoile et pondéré les moyennes par la population.</dd>
+    <dt>Résultats</dt><dd>778 millions de personnes sans accès basique en 2017, dont la moitié en Afrique. Pour l&#x27;Éthiopie, les trois indicateurs d&#x27;arbitrage désignent la création de services en zone rurale.</dd>
+    <dt>Impact</dt><dd>Un outil de décision qui justifie un pays et un domaine, plutôt qu&#x27;une simple description.</dd>
+    <dt>Limites</dt><dd>La mortalité n&#x27;est disponible que pour 2016 et les données s&#x27;arrêtent en 2017.</dd>
+  </dl>
+  <p class="repo-link"><a href="https://github.com/lcabart21/oc-p10-dashboard-eau-potable">Voir le code et les livrables sur GitHub</a></p>
+</article>
+
+<article class="case" id="p11">
+  <div class="case-head">
+    <h3>Trouver les premiers marchés export d&#x27;une PME de volaille bio</h3>
+    <p class="meta">Projet 11, septembre 2026. ACP, classification hiérarchique, k-means, API Banque mondiale.</p>
+  </div>
+  <figure><img src="assets/p11.jpg" alt="Carte du monde colorée selon six familles de pays" loading="lazy" width="1100"></figure>
+  <dl class="story">
+    <dt>Contexte</dt><dd>Une PME 100 % française veut exporter ses poulets bio, sans pays présélectionné.</dd>
+    <dt>Besoin métier</dt><dd>Proposer au comité de direction des groupes de pays à étudier en priorité.</dd>
+    <dt>Démarche</dt><dd>J&#x27;ai décrit 166 pays avec 13 indicateurs, résumés en quatre axes par une ACP. Une classification hiérarchique fixe six familles, que k-means affine. J&#x27;ai vérifié la stabilité des groupes, puis classé les pays sous plusieurs pondérations.</dd>
+    <dt>Résultats</dt><dd>Une famille cible, l&#x27;Europe développée. Quatre pays pour démarrer : Allemagne, Pays-Bas, Royaume-Uni et Danemark. L&#x27;Allemagne reste en tête quelle que soit la pondération.</dd>
+    <dt>Impact</dt><dd>Une feuille de route en deux phases, du frais en Europe au congelé pour le grand export, et une décision attendue : lancer l&#x27;étude de marché sur ces quatre pays.</dd>
+    <dt>Limites</dt><dd>Données de 2017, sans indicateur de demande bio ni de barrières douanières.</dd>
+  </dl>
+  <p class="repo-link"><a href="https://github.com/lcabart21/oc-p11-etude-marche-clustering">Voir le code et les livrables sur GitHub</a></p>
+</article>
+
+<article class="case" id="p8">
+  <div class="case-head">
+    <h3>Mesurer qui n&#x27;accède pas aux formations data</h3>
+    <p class="meta">Projet 8, juillet 2026. dbt, Snowflake, SQL.</p>
+  </div>
+  <figure><img src="assets/p8.jpg" alt="Graphique de la part de femmes chez les inscrits comparée à la population" loading="lazy" width="1100"></figure>
+  <dl class="story">
+    <dt>Contexte</dt><dd>Une direction pédagogique veut objectiver le profil des inscrits à ses parcours data entre 2022 et 2025.</dd>
+    <dt>Besoin métier</dt><dd>Savoir qui s&#x27;inscrit, et surtout qui manque à l&#x27;appel par rapport à la population française.</dd>
+    <dt>Démarche</dt><dd>J&#x27;ai construit un pipeline dbt en couches (staging, intermediate, marts), avec 29 tests à chaque exécution. J&#x27;ai créé un indice de représentation lisible par un public non technique, à périmètre comparable avec l&#x27;INSEE.</dd>
+    <dt>Résultats</dt><dd>Les femmes sont sous-représentées (indice 0,65) sans amélioration en quatre ans. L&#x27;Île-de-France pèse deux fois son poids démographique. Les 20-24 ans passent de 1,3 % à 8,6 % des inscrits.</dd>
+    <dt>Impact</dt><dd>Des constats chiffrés pour orienter les actions d&#x27;accessibilité et d&#x27;égalité des chances.</dd>
+    <dt>Limites</dt><dd>Le chargement des données INSEE reste manuel et les effectifs baissent de 44 % sur la période.</dd>
+  </dl>
+  <p class="repo-link"><a href="https://github.com/lcabart21/oc-p8-pipeline-dbt-snowflake">Voir le code et les livrables sur GitHub</a></p>
+</article>
+</section>
+
+<section id="autres" class="wrap" aria-labelledby="h-autres">
+<h2 id="h-autres">Autres projets</h2>
+<p class="intro">Du plus récent au plus ancien. Chaque dépôt contient un README sur le même modèle, les livrables et, quand c'est possible, de quoi rejouer l'analyse.</p>
+<ul class="others">
+<li id="p9">
+  <p class="when">Septembre 2026</p>
+  <div><h3><a href="https://github.com/lcabart21/oc-p9-tendances-streaming-musical">Streaming musical : ce qui fait un hit, et la Pop à 6 mois</a></h3><p>Le genre explique 27 % de la popularité, le son rien. La prévision Prophet est jugée face à un modèle naïf, qui gagne sur l&#x27;erreur ponctuelle : je l&#x27;écris.</p><p class="stack">Python, tests non paramétriques, Prophet</p></div>
+</li>
+<li id="p7">
+  <p class="when">Juillet 2026</p>
+  <div><h3><a href="https://github.com/lcabart21/oc-p7-dashboard-powerbi-sanitoral">Suivi de portefeuille projets pour trois niveaux de direction</a></h3><p>Des alertes à 15 % d&#x27;écart, et une cause structurelle trouvée : la phase de test des projets IT dépasse son budget de 472 % en moyenne.</p><p class="stack">Power BI, Power Query, DAX</p></div>
+</li>
+<li id="p6">
+  <p class="when">Mai 2026</p>
+  <div><h3><a href="https://github.com/lcabart21/oc-p6-bottleneck-analyse-stock-ventes">BottleNeck : stock et ventes d&#x27;un caviste en ligne</a></h3><p>Version initiale, conservée pour montrer la progression : ses huit erreurs sont corrigées dans le projet 13.</p><p class="stack">Python, pandas</p></div>
+</li>
+<li id="p5">
+  <p class="when">Mars 2026</p>
+  <div><h3><a href="https://github.com/lcabart21/oc-p5-marche-immobilier-sql">DataImmo : base des ventes immobilières et 12 analyses</a></h3><p>Une base normalisée et des requêtes avec CTE et fonctions de fenêtre. Paris est à 12 091 €/m², et les ventes progressent de 3,7 % entre les deux premiers trimestres 2020.</p><p class="stack">SQL, SQLite, modélisation</p></div>
+</li>
+<li id="p4">
+  <p class="when">Janvier 2026</p>
+  <div><h3><a href="https://github.com/lcabart21/oc-p4-analyse-fao-sous-nutrition">Sous-nutrition dans le monde</a></h3><p>La nourriture disponible suffirait pour 132 % de la population mondiale, mais 7,1 % des habitants sont sous-alimentés. C&#x27;est un problème de répartition.</p><p class="stack">Python, pandas</p></div>
+</li>
+<li id="p3">
+  <p class="when">Novembre 2025</p>
+  <div><h3><a href="https://github.com/lcabart21/oc-p3-analyse-sql">Base de contrats d&#x27;assurance habitation</a></h3><p>Dictionnaire de données, schéma relationnel et 12 requêtes métier sur environ 31 000 contrats.</p><p class="stack">SQL, SQLite</p></div>
+</li>
+<li id="p2">
+  <p class="when">Octobre 2025</p>
+  <div><h3><a href="https://github.com/lcabart21/oc-p2-analyse-ventes-ecommerce">Rapport marketing mensuel d&#x27;un e-commerce</a></h3><p>Les ventes sont multipliées par 10, mais la conversion passe de 11 % à 5 %. Trois axes d&#x27;action sont proposés.</p><p class="stack">Excel, storytelling</p></div>
+</li>
+<li id="perso">
+  <p class="when">Mai 2025</p>
+  <div><h3><a href="https://github.com/lcabart21/perso-us-medical-insurance">Coûts d&#x27;assurance santé aux États-Unis</a></h3><p>Projet personnel : un fumeur paie en moyenne 3,8 fois plus. Mes premiers pas en Python.</p><p class="stack">Python, pandas, plotly</p></div>
+</li>
+</ul>
+</section>
+
+<section id="competences" class="wrap" aria-labelledby="h-comp">
+<h2 id="h-comp">Compétences et preuves</h2>
+<p class="intro">Chaque compétence renvoie aux projets qui la démontrent. Les colonnes portent le numéro du projet OpenClassrooms et mènent au dépôt.</p>
+<div class="matrix-wrap"><table class="matrix"><caption>Projets qui mobilisent chaque compétence (numéro du projet OpenClassrooms)</caption><thead><tr><th scope="col">Compétence</th><th scope="col"><a href="https://github.com/lcabart21/perso-us-medical-insurance">Perso</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p2-analyse-ventes-ecommerce">2</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p3-analyse-sql">3</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p4-analyse-fao-sous-nutrition">4</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p5-marche-immobilier-sql">5</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p6-bottleneck-analyse-stock-ventes">6</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p7-dashboard-powerbi-sanitoral">7</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p8-pipeline-dbt-snowflake">8</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p9-tendances-streaming-musical">9</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p10-dashboard-eau-potable">10</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p11-etude-marche-clustering">11</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p12-detection-faux-billets">12</a></th><th scope="col"><a href="https://github.com/lcabart21/oc-p13-bottleneck-ia">13</a></th></tr></thead><tbody><tr><th scope="row">Cadrer un besoin métier</th><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td></tr><tr><th scope="row">Nettoyer et contrôler la qualité des données</th><td></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td></tr><tr><th scope="row">SQL et modélisation relationnelle</th><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Python et pandas</th><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td></tr><tr><th scope="row">Statistiques et tests</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td></tr><tr><th scope="row">Machine learning</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td></tr><tr><th scope="row">Power BI et DAX</th><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td></td></tr><tr><th scope="row">Data engineering (dbt, Snowflake)</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td></td><td></td><td></td></tr><tr><th scope="row">Restituer et recommander</th><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td><td></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td><td><span class="dot" aria-label="oui"></span></td></tr><tr><th scope="row">Utiliser l&#x27;IA de façon critique</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td><span class="dot" aria-label="oui"></span></td></tr></tbody></table></div>
+</section>
+
+<section id="veille" class="wrap" aria-labelledby="h-veille">
+<h2 id="h-veille">Ma veille</h2>
+<p class="intro">Les outils de la data changent tous les mois. Je suis des communautés de praticiens qui partagent ce qui marche et ce qui casse, et je ne teste que ce qui répond à un problème que j'ai réellement.</p>
+<div class="veille">
+<div>
+<h3>Le système</h3>
+<ol class="steps">
+<li><b>Lire</b>Deux à trois fois par semaine, je parcours une sélection de communautés Reddit sur mes outils et mon métier.</li>
+<li><b>Garder</b>Ce qui m'intéresse part dans les favoris de l'application, pour y revenir au calme.</li>
+<li><b>Trier</b>Je teste en priorité ce qui touche à un problème rencontré au travail. Le reste attend.</li>
+<li><b>Tester</b>J'essaie sur un cas réel, à petite échelle, avant d'adopter.</li>
+<li><b>Adopter</b>Si le test est concluant, l'outil ou la pratique entre dans mon quotidien.</li>
+</ol>
+</div>
+<div>
+<h3>Les sources</h3>
+<ul class="subs">
+<li><span>r/BigQuery</span><span>Mon entrepôt de données au quotidien</span></li>
+<li><span>r/PowerBI</span><span>DAX, modélisation, nouveautés</span></li>
+<li><span>r/analytics, r/dataanalysis</span><span>Pratiques du métier</span></li>
+<li><span>r/dataengineering</span><span>Pipelines, dbt, qualité des données</span></li>
+<li><span>r/datascience</span><span>Méthodes statistiques et ML</span></li>
+<li><span>r/dataisbeautiful</span><span>Idées de visualisation</span></li>
+<li><span>r/ClaudeAI, r/ClaudeHomies</span><span>Usages de l'IA générative</span></li>
+</ul>
+</div>
+<div class="wins">
+<h3>Ce que ma veille a déjà changé</h3>
+<ul>
+<li>J'ai découvert l'extension BigQuery pour VS Code. J'interroge désormais l'entrepôt en local, sans passer par la console web, et je peux travailler mes requêtes avec un assistant IA dans le même outil.</li>
+<li>Des astuces DAX repérées dans les discussions ont été testées directement dans mes rapports Power BI avant d'être adoptées.</li>
+<li>Dans le projet 13, la veille a orienté les choix : pandera plutôt que Great Expectations, une détection d'anomalies robuste par catégorie plutôt qu'un modèle complexe, des prompts structurés plutôt que naïfs. Chaque option a été testée sur les données avant d'être retenue.</li>
+</ul>
+</div>
+<p class="next"><b>Prochaine étape.</b> Reddit donne des retours d'expérience, mais pas toujours des sources vérifiables. J'ajoute donc les notes de version officielles de BigQuery et le blog des mises à jour mensuelles de Power BI, pour confirmer ce que je lis avant de l'appliquer.</p>
+</div>
+</section>
+
+<section id="profil" class="wrap" aria-labelledby="h-profil">
+<h2 id="h-profil">Profil</h2>
+<div class="about">
+<div>
+<p>Au sein de l'équipe Client Insights EMEA de Louis Vuitton, je travaille sur l'analyse de la clientèle : fidélisation, ciblage de campagnes clienteling, tableaux de bord de suivi pour les boutiques.</p>
+<p>J'aime les problèmes où la donnée est imparfaite et où il faut d'abord vérifier avant de conclure. Je documente ce que je garde, ce que j'écarte et pourquoi, pour que les équipes puissent reprendre l'outil sans moi.</p>
+</div>
+<dl class="facts">
+<dt>Poste</dt><dd>Data analyst, Client Insights EMEA, Louis Vuitton</dd>
+<dt>Formation</dt><dd>Data Analyst, OpenClassrooms (titre RNCP niveau 6)</dd>
+<dt>Outils</dt><dd>BigQuery (SQL), Power BI (DAX), Python, Dataiku, dbt</dd>
+<dt>Ville</dt><dd>Paris</dd>
+<dt>Code</dt><dd><a href="https://github.com/lcabart21">github.com/lcabart21</a></dd>
+</dl>
+</div>
+</section>
+</main>
+<footer><div class="wrap">Leo Cabart, 2026. Les projets OpenClassrooms reposent sur des données publiques ou fictives fournies pour l'exercice.</div></footer>
+</body>
+</html>
