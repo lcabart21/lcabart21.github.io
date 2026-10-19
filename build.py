@@ -462,8 +462,8 @@ PAGE = f"""<!doctype html>
 <main>
 <header class="hero wrap">
 <h1>Des chiffres justes, puis une décision.</h1>
-<p class="lede">Je suis <b>data analyst Client Insights</b> chez Louis Vuitton, à Paris. Je transforme des données clients et ventes en indicateurs fiables et en recommandations que les équipes métier peuvent appliquer.</p>
-<p class="lede">Je travaille au quotidien avec BigQuery, Power BI et Python. Ce portfolio rassemble treize projets, du tableur à l'IA générative.</p>
+<p class="lede">Je suis <b>Data Analyst Client Insights</b> chez Louis Vuitton, à Paris. Je transforme des données clients et ventes en indicateurs fiables et en recommandations que les équipes métier peuvent appliquer.</p>
+<p class="lede">Je travaille au quotidien avec BigQuery, Power BI, Python & Dataiku. Ce portfolio rassemble treize projets, du tableur à l'IA générative.</p>
 <p class="links"><a href="#projets">Voir les projets</a><a href="https://github.com/lcabart21">GitHub</a></p>
 <div class="chart" aria-describedby="chart-note">{timeline_svg()}</div>
 <p class="chart-note" id="chart-note">Chaque point est un projet. Les points jaunes sont détaillés plus bas ; les autres renvoient au code sur GitHub.</p>
@@ -535,8 +535,10 @@ PAGE = f"""<!doctype html>
 <p>J'aime les problèmes où la donnée est imparfaite et où il faut d'abord vérifier avant de conclure. Je documente ce que je garde, ce que j'écarte et pourquoi, pour que les équipes puissent reprendre l'outil sans moi.</p>
 </div>
 <dl class="facts">
-<dt>Poste</dt><dd>Data analyst, Client Insights EMEA, Louis Vuitton</dd>
-<dt>Formation</dt><dd>Master 2 International Management, IPAG Business School / Data Analysis Bootcamp, Le Wagon (titre RNCP niveau 6) / Data Analyst, OpenClassrooms (titre RNCP niveau 6)</dd>
+<dt>Poste</dt><dd>Data Analyst, Client Insights EMEA, Louis Vuitton</dd>
+<dt>Formation</dt><dd>Master 2 International Management, IPAG Business School
+Data Analysis Bootcamp, Le Wagon (titre RNCP niveau 6)
+Data Analyst, OpenClassrooms (titre RNCP niveau 6)</dd>
 <dt>Outils</dt><dd>BigQuery (SQL), Power BI (DAX), Python, Dataiku, dbt</dd>
 <dt>Ville</dt><dd>Paris</dd>
 <dt>Code</dt><dd><a href="https://github.com/lcabart21">github.com/lcabart21</a></dd>
