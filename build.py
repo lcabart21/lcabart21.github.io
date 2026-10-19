@@ -1,104 +1,229 @@
 """Génère index.html du portfolio (lcabart21.github.io)."""
+
 from datetime import date
 import html
 
 GH = "https://github.com/lcabart21/"
 
-DOMAINS = ["Tableur et reporting", "SQL et modélisation", "Python et analyse", "Business intelligence",
-           "Data engineering", "Statistiques et ML", "IA générative"]
+DOMAINS = [
+    "Tableur et reporting",
+    "SQL et modélisation",
+    "Python et analyse",
+    "Business intelligence",
+    "Data engineering",
+    "Statistiques et ML",
+    "IA générative",
+]
 
 # (id, date, domaine, titre court, dépôt)
 TIMELINE = [
-    ("perso", date(2025, 5, 15), 2, "Coûts d'assurance santé", "perso-us-medical-insurance"),
-    ("p2", date(2025, 10, 15), 0, "Ventes e-commerce", "oc-p2-analyse-ventes-ecommerce"),
+    (
+        "perso",
+        date(2025, 5, 15),
+        2,
+        "Coûts d'assurance santé",
+        "perso-us-medical-insurance",
+    ),
+    (
+        "p2",
+        date(2025, 10, 15),
+        0,
+        "Ventes e-commerce",
+        "oc-p2-analyse-ventes-ecommerce",
+    ),
     ("p3", date(2025, 11, 15), 1, "Base assurance habitation", "oc-p3-analyse-sql"),
-    ("p4", date(2026, 1, 15), 2, "Sous-nutrition mondiale", "oc-p4-analyse-fao-sous-nutrition"),
+    (
+        "p4",
+        date(2026, 1, 15),
+        2,
+        "Sous-nutrition mondiale",
+        "oc-p4-analyse-fao-sous-nutrition",
+    ),
     ("p5", date(2026, 3, 15), 1, "Marché immobilier", "oc-p5-marche-immobilier-sql"),
-    ("p6", date(2026, 5, 15), 2, "BottleNeck, version initiale", "oc-p6-bottleneck-analyse-stock-ventes"),
-    ("p7", date(2026, 7, 8), 3, "Portefeuille projets Sanitoral", "oc-p7-dashboard-powerbi-sanitoral"),
-    ("p8", date(2026, 7, 22), 4, "Pipeline dbt et Snowflake", "oc-p8-pipeline-dbt-snowflake"),
-    ("p9", date(2026, 9, 3), 5, "Streaming musical", "oc-p9-tendances-streaming-musical"),
-    ("p10", date(2026, 9, 10), 3, "Accès à l'eau potable", "oc-p10-dashboard-eau-potable"),
-    ("p11", date(2026, 9, 14), 5, "Export de poulet bio", "oc-p11-etude-marche-clustering"),
+    (
+        "p6",
+        date(2026, 5, 15),
+        2,
+        "BottleNeck, version initiale",
+        "oc-p6-bottleneck-analyse-stock-ventes",
+    ),
+    (
+        "p7",
+        date(2026, 7, 8),
+        3,
+        "Portefeuille projets Sanitoral",
+        "oc-p7-dashboard-powerbi-sanitoral",
+    ),
+    (
+        "p8",
+        date(2026, 7, 22),
+        4,
+        "Pipeline dbt et Snowflake",
+        "oc-p8-pipeline-dbt-snowflake",
+    ),
+    (
+        "p9",
+        date(2026, 9, 3),
+        5,
+        "Streaming musical",
+        "oc-p9-tendances-streaming-musical",
+    ),
+    (
+        "p10",
+        date(2026, 9, 10),
+        3,
+        "Accès à l'eau potable",
+        "oc-p10-dashboard-eau-potable",
+    ),
+    (
+        "p11",
+        date(2026, 9, 14),
+        5,
+        "Export de poulet bio",
+        "oc-p11-etude-marche-clustering",
+    ),
     ("p12", date(2026, 9, 30), 5, "Faux billets", "oc-p12-detection-faux-billets"),
     ("p13", date(2026, 10, 12), 6, "BottleNeck avec l'IA", "oc-p13-bottleneck-ia"),
 ]
 
 FEATURED = [
-    dict(id="p13", repo="oc-p13-bottleneck-ia", img="p13.jpg",
-         alt="Nuage de points prix de vente contre prix d'achat : un seul produit s'écarte de la diagonale",
-         title="Reprendre une analyse avec l'IA, sans lui faire confiance aveuglément",
-         meta="Projet 13, octobre 2026. Python, pandas, pandera, scikit-learn, Claude.",
-         contexte="Mon analyse P6 des ventes et du stock d'un caviste en ligne devait servir à la direction, aux achats et à la logistique.",
-         besoin="Fiabiliser les indicateurs et distinguer les erreurs de prix des grands crus légitimement chers.",
-         demarche="J'ai utilisé l'IA comme relecteur, avec deux variantes de prompt notées sur une grille fixée à l'avance. J'ai comparé pandera et Great Expectations sur les mêmes règles, puis cinq méthodes de détection d'anomalies. Aucune proposition de l'IA n'a été adoptée sans être exécutée sur les vraies données.",
-         resultats="8 erreurs de calcul corrigées. Le prompt structuré en trouvait 8 sur 8, le prompt naïf 6, et son code plantait. Une seule anomalie de prix remonte, et c'est la vraie : Isolation Forest en signalait 22.",
-         impact="Les équipes reçoivent des indicateurs justes et une liste de corrections courte. La démarche est documentée et reproductible, avec un mini-plan de formation pour les métiers.",
-         limites="La période des ventes n'est pas connue (hypothèse : 12 mois). L'expérience IA repose sur une seule exécution par prompt."),
-    dict(id="p12", repo="oc-p12-detection-faux-billets", img="p12.jpg",
-         alt="Courbe du rappel et de la précision selon le seuil de décision",
-         title="Détecter les faux billets à partir de six mesures",
-         meta="Projet 12, septembre 2026. scikit-learn, pipelines, validation croisée.",
-         contexte="Un organisme de lutte contre le faux-monnayage scanne les billets et relève six dimensions géométriques.",
-         besoin="Prédire si un billet est faux, en priorité sans en laisser passer : un faux non détecté retourne en circulation.",
-         demarche="J'ai imputé les valeurs manquantes sans utiliser la cible, puis comparé quatre modèles en validation croisée. J'ai choisi le seuil sur les prédictions hors-pli, en donnant deux fois plus de poids au rappel, et livré un script de prédiction.",
-         resultats="98,4 % des faux détectés sur le jeu de test, et 97,6 % des alertes sont justes. J'ai retenu la régression logistique pour ses probabilités fiables et ses coefficients explicables.",
-         impact="Un outil utilisable tel quel sur un billet ou un fichier, avec une procédure de ré-entraînement quand les contrefaçons évoluent.",
-         limites="Deux faux ont les dimensions de vrais billets : il faudrait d'autres mesures (couleur, texture) pour les attraper."),
-    dict(id="p10", repo="oc-p10-dashboard-eau-potable", img="p10.jpg",
-         alt="Page nationale du tableau de bord Power BI pour l'Éthiopie",
-         title="Choisir où une ONG doit investir dans l'accès à l'eau",
-         meta="Projet 10, septembre 2026. Power BI, Power Query, DAX.",
-         contexte="Une ONG obtiendra un financement à investir dans un seul domaine (création de services, modernisation ou conseil), dans un pays à choisir.",
-         besoin="Descendre du monde au continent puis au pays, en excluant les pays trop instables.",
-         demarche="J'ai écrit un blueprint qui relie chaque besoin à une mesure, puis fait valider un mockup. J'ai corrigé six anomalies de données dans Power Query, construit un modèle en étoile et pondéré les moyennes par la population.",
-         resultats="778 millions de personnes sans accès basique en 2017, dont la moitié en Afrique. Pour l'Éthiopie, les trois indicateurs d'arbitrage désignent la création de services en zone rurale.",
-         impact="Un outil de décision qui justifie un pays et un domaine, plutôt qu'une simple description.",
-         limites="La mortalité n'est disponible que pour 2016 et les données s'arrêtent en 2017."),
-    dict(id="p11", repo="oc-p11-etude-marche-clustering", img="p11.jpg",
-         alt="Carte du monde colorée selon six familles de pays",
-         title="Trouver les premiers marchés export d'une PME de volaille bio",
-         meta="Projet 11, septembre 2026. ACP, classification hiérarchique, k-means, API Banque mondiale.",
-         contexte="Une PME 100 % française veut exporter ses poulets bio, sans pays présélectionné.",
-         besoin="Proposer au comité de direction des groupes de pays à étudier en priorité.",
-         demarche="J'ai décrit 166 pays avec 13 indicateurs, résumés en quatre axes par une ACP. Une classification hiérarchique fixe six familles, que k-means affine. J'ai vérifié la stabilité des groupes, puis classé les pays sous plusieurs pondérations.",
-         resultats="Une famille cible, l'Europe développée. Quatre pays pour démarrer : Allemagne, Pays-Bas, Royaume-Uni et Danemark. L'Allemagne reste en tête quelle que soit la pondération.",
-         impact="Une feuille de route en deux phases, du frais en Europe au congelé pour le grand export, et une décision attendue : lancer l'étude de marché sur ces quatre pays.",
-         limites="Données de 2017, sans indicateur de demande bio ni de barrières douanières."),
-    dict(id="p8", repo="oc-p8-pipeline-dbt-snowflake", img="p8.jpg",
-         alt="Graphique de la part de femmes chez les inscrits comparée à la population",
-         title="Mesurer qui n'accède pas aux formations data",
-         meta="Projet 8, juillet 2026. dbt, Snowflake, SQL.",
-         contexte="Une direction pédagogique veut objectiver le profil des inscrits à ses parcours data entre 2022 et 2025.",
-         besoin="Savoir qui s'inscrit, et surtout qui manque à l'appel par rapport à la population française.",
-         demarche="J'ai construit un pipeline dbt en couches (staging, intermediate, marts), avec 29 tests à chaque exécution. J'ai créé un indice de représentation lisible par un public non technique, à périmètre comparable avec l'INSEE.",
-         resultats="Les femmes sont sous-représentées (indice 0,65) sans amélioration en quatre ans. L'Île-de-France pèse deux fois son poids démographique. Les 20-24 ans passent de 1,3 % à 8,6 % des inscrits.",
-         impact="Des constats chiffrés pour orienter les actions d'accessibilité et d'égalité des chances.",
-         limites="Le chargement des données INSEE reste manuel et les effectifs baissent de 44 % sur la période."),
+    dict(
+        id="p13",
+        repo="oc-p13-bottleneck-ia",
+        img="p13.jpg",
+        alt="Nuage de points prix de vente contre prix d'achat : un seul produit s'écarte de la diagonale",
+        title="Reprendre une analyse avec l'IA, sans lui faire confiance aveuglément",
+        meta="Projet 13 OpenClassrooms, octobre 2026 / Python, pandas, pandera, scikit-learn, Claude.",
+        contexte="Mon analyse P6 OpenClassrooms des ventes et du stock d'un caviste en ligne devait servir à la direction, aux achats et à la logistique.",
+        besoin="Fiabiliser les indicateurs et distinguer les erreurs de prix des grands crus légitimement chers.",
+        demarche="J'ai utilisé l'IA comme relecteur, avec deux variantes de prompt notées sur une grille fixée à l'avance. J'ai comparé pandera et Great Expectations sur les mêmes règles, puis cinq méthodes de détection d'anomalies. Aucune proposition de l'IA n'a été adoptée sans être exécutée sur les vraies données.",
+        resultats="8 erreurs de calcul corrigées. Le prompt structuré en trouvait 8 sur 8, le prompt naïf 6, et son code plantait. Une seule anomalie de prix remonte, et c'est la vraie : Isolation Forest en signalait 22.",
+        impact="Les équipes reçoivent des indicateurs justes et une liste de corrections courte. La démarche est documentée et reproductible, avec un mini-plan de formation pour les métiers.",
+        limites="La période des ventes n'est pas connue (hypothèse : 12 mois). L'expérience IA repose sur une seule exécution par prompt.",
+    ),
+    dict(
+        id="p12",
+        repo="oc-p12-detection-faux-billets",
+        img="p12.jpg",
+        alt="Courbe du rappel et de la précision selon le seuil de décision",
+        title="Détecter les faux billets à partir de six mesures",
+        meta="Projet 12 OpenClassrooms, septembre 2026 / scikit-learn, pipelines, validation croisée.",
+        contexte="Un organisme de lutte contre le faux-monnayage scanne les billets et relève six dimensions géométriques.",
+        besoin="Prédire si un billet est faux, en priorité sans en laisser passer : un faux non détecté retourne en circulation.",
+        demarche="J'ai imputé les valeurs manquantes sans utiliser la cible, puis comparé quatre modèles en validation croisée. J'ai choisi le seuil sur les prédictions hors-pli, en donnant deux fois plus de poids au rappel, et livré un script de prédiction.",
+        resultats="98,4 % des faux détectés sur le jeu de test, et 97,6 % des alertes sont justes. J'ai retenu la régression logistique pour ses probabilités fiables et ses coefficients explicables.",
+        impact="Un outil utilisable tel quel sur un billet ou un fichier, avec une procédure de ré-entraînement quand les contrefaçons évoluent.",
+        limites="Deux faux ont les dimensions de vrais billets : il faudrait d'autres mesures (couleur, texture) pour les attraper.",
+    ),
+    dict(
+        id="p10",
+        repo="oc-p10-dashboard-eau-potable",
+        img="p10.jpg",
+        alt="Page nationale du tableau de bord Power BI pour l'Éthiopie",
+        title="Choisir où une ONG doit investir dans l'accès à l'eau",
+        meta="Projet 10 OpenClassrooms, septembre 2026 / Power BI, Power Query, DAX.",
+        contexte="Une ONG obtiendra un financement à investir dans un seul domaine (création de services, modernisation ou conseil), dans un pays à choisir.",
+        besoin="Descendre du monde au continent puis au pays, en excluant les pays trop instables.",
+        demarche="J'ai écrit un blueprint qui relie chaque besoin à une mesure, puis fait valider un mockup. J'ai corrigé six anomalies de données dans Power Query, construit un modèle en étoile et pondéré les moyennes par la population.",
+        resultats="778 millions de personnes sans accès basique en 2017, dont la moitié en Afrique. Pour l'Éthiopie, les trois indicateurs d'arbitrage désignent la création de services en zone rurale.",
+        impact="Un outil de décision qui justifie un pays et un domaine, plutôt qu'une simple description.",
+        limites="La mortalité n'est disponible que pour 2016 et les données s'arrêtent en 2017.",
+    ),
+    dict(
+        id="p11",
+        repo="oc-p11-etude-marche-clustering",
+        img="p11.jpg",
+        alt="Carte du monde colorée selon six familles de pays",
+        title="Trouver les premiers marchés export d'une PME de volaille bio",
+        meta="Projet 11 OpenClassrooms, septembre 2026 / ACP, classification hiérarchique, k-means, API Banque mondiale.",
+        contexte="Une PME 100 % française veut exporter ses poulets bio, sans pays présélectionné.",
+        besoin="Proposer au comité de direction des groupes de pays à étudier en priorité.",
+        demarche="J'ai décrit 166 pays avec 13 indicateurs, résumés en quatre axes par une ACP. Une classification hiérarchique fixe six familles, que k-means affine. J'ai vérifié la stabilité des groupes, puis classé les pays sous plusieurs pondérations.",
+        resultats="Une famille cible, l'Europe développée. Quatre pays pour démarrer : Allemagne, Pays-Bas, Royaume-Uni et Danemark. L'Allemagne reste en tête quelle que soit la pondération.",
+        impact="Une feuille de route en deux phases, du frais en Europe au congelé pour le grand export, et une décision attendue : lancer l'étude de marché sur ces quatre pays.",
+        limites="Données de 2017, sans indicateur de demande bio ni de barrières douanières.",
+    ),
+    dict(
+        id="p8",
+        repo="oc-p8-pipeline-dbt-snowflake",
+        img="p8.jpg",
+        alt="Graphique de la part de femmes chez les inscrits comparée à la population",
+        title="Mesurer qui n'accède pas aux formations data",
+        meta="Projet 8 OpenClassrooms, juillet 2026 / dbt, Snowflake, SQL.",
+        contexte="Une direction pédagogique veut objectiver le profil des inscrits à ses parcours data entre 2022 et 2025.",
+        besoin="Savoir qui s'inscrit, et surtout qui manque à l'appel par rapport à la population française.",
+        demarche="J'ai construit un pipeline dbt en couches (staging, intermediate, marts), avec 29 tests à chaque exécution. J'ai créé un indice de représentation lisible par un public non technique, à périmètre comparable avec l'INSEE.",
+        resultats="Les femmes sont sous-représentées (indice 0,65) sans amélioration en quatre ans. L'Île-de-France pèse deux fois son poids démographique. Les 20-24 ans passent de 1,3 % à 8,6 % des inscrits.",
+        impact="Des constats chiffrés pour orienter les actions d'accessibilité et d'égalité des chances.",
+        limites="Le chargement des données INSEE reste manuel et les effectifs baissent de 44 % sur la période.",
+    ),
 ]
 
 OTHERS = [
-    ("p9", "Septembre 2026", "Streaming musical : ce qui fait un hit, et la Pop à 6 mois",
-     "Le genre explique 27 % de la popularité, le son rien. La prévision Prophet est jugée face à un modèle naïf, qui gagne sur l'erreur ponctuelle : je l'écris.", "Python, tests non paramétriques, Prophet"),
-    ("p7", "Juillet 2026", "Suivi de portefeuille projets pour trois niveaux de direction",
-     "Des alertes à 15 % d'écart, et une cause structurelle trouvée : la phase de test des projets IT dépasse son budget de 472 % en moyenne.", "Power BI, Power Query, DAX"),
-    ("p6", "Mai 2026", "BottleNeck : stock et ventes d'un caviste en ligne",
-     "Version initiale, conservée pour montrer la progression : ses huit erreurs sont corrigées dans le projet 13.", "Python, pandas"),
-    ("p5", "Mars 2026", "DataImmo : base des ventes immobilières et 12 analyses",
-     "Une base normalisée et des requêtes avec CTE et fonctions de fenêtre. Paris est à 12 091 €/m², et les ventes progressent de 3,7 % entre les deux premiers trimestres 2020.", "SQL, SQLite, modélisation"),
-    ("p4", "Janvier 2026", "Sous-nutrition dans le monde",
-     "La nourriture disponible suffirait pour 132 % de la population mondiale, mais 7,1 % des habitants sont sous-alimentés. C'est un problème de répartition.", "Python, pandas"),
-    ("p3", "Novembre 2025", "Base de contrats d'assurance habitation",
-     "Dictionnaire de données, schéma relationnel et 12 requêtes métier sur environ 31 000 contrats.", "SQL, SQLite"),
-    ("p2", "Octobre 2025", "Rapport marketing mensuel d'un e-commerce",
-     "Les ventes sont multipliées par 10, mais la conversion passe de 11 % à 5 %. Trois axes d'action sont proposés.", "Excel, storytelling"),
-    ("perso", "Mai 2025", "Coûts d'assurance santé aux États-Unis",
-     "Projet personnel : un fumeur paie en moyenne 3,8 fois plus. Mes premiers pas en Python.", "Python, pandas, plotly"),
+    (
+        "p9",
+        "Septembre 2026",
+        "Streaming musical : ce qui fait un hit, et la Pop à 6 mois",
+        "Le genre explique 27 % de la popularité, le son rien. La prévision Prophet est jugée face à un modèle naïf, qui gagne sur l'erreur ponctuelle : je l'écris.",
+        "Python, tests non paramétriques, Prophet",
+    ),
+    (
+        "p7",
+        "Juillet 2026",
+        "Suivi de portefeuille projets pour trois niveaux de direction",
+        "Des alertes à 15 % d'écart, et une cause structurelle trouvée : la phase de test des projets IT dépasse son budget de 472 % en moyenne.",
+        "Power BI, Power Query, DAX",
+    ),
+    (
+        "p6",
+        "Mai 2026",
+        "BottleNeck : stock et ventes d'un caviste en ligne",
+        "Version initiale, conservée pour montrer la progression : ses huit erreurs sont corrigées dans le projet 13.",
+        "Python, pandas",
+    ),
+    (
+        "p5",
+        "Mars 2026",
+        "DataImmo : base des ventes immobilières et 12 analyses",
+        "Une base normalisée et des requêtes avec CTE et fonctions de fenêtre. Paris est à 12 091 €/m², et les ventes progressent de 3,7 % entre les deux premiers trimestres 2020.",
+        "SQL, SQLite, modélisation",
+    ),
+    (
+        "p4",
+        "Janvier 2026",
+        "Sous-nutrition dans le monde",
+        "La nourriture disponible suffirait pour 132 % de la population mondiale, mais 7,1 % des habitants sont sous-alimentés. C'est un problème de répartition.",
+        "Python, pandas",
+    ),
+    (
+        "p3",
+        "Novembre 2025",
+        "Base de contrats d'assurance habitation",
+        "Dictionnaire de données, schéma relationnel et 12 requêtes métier sur environ 31 000 contrats.",
+        "SQL, SQLite",
+    ),
+    (
+        "p2",
+        "Octobre 2025",
+        "Rapport marketing mensuel d'un e-commerce",
+        "Les ventes sont multipliées par 10, mais la conversion passe de 11 % à 5 %. Trois axes d'action sont proposés.",
+        "Excel, storytelling",
+    ),
+    (
+        "perso",
+        "Mai 2025",
+        "Coûts d'assurance santé aux États-Unis",
+        "Projet personnel : un fumeur paie en moyenne 3,8 fois plus. Mes premiers pas en Python.",
+        "Python, pandas, plotly",
+    ),
 ]
 
 SKILLS = [
     ("Cadrer un besoin métier", ["p7", "p10", "p11", "p13"]),
-    ("Nettoyer et contrôler la qualité des données", ["p4", "p6", "p8", "p9", "p10", "p11", "p13"]),
+    (
+        "Nettoyer et contrôler la qualité des données",
+        ["p4", "p6", "p8", "p9", "p10", "p11", "p13"],
+    ),
     ("SQL et modélisation relationnelle", ["p3", "p5", "p8"]),
     ("Python et pandas", ["perso", "p4", "p6", "p9", "p11", "p12", "p13"]),
     ("Statistiques et tests", ["p9", "p12"]),
@@ -108,7 +233,21 @@ SKILLS = [
     ("Restituer et recommander", ["p2", "p4", "p7", "p9", "p10", "p11", "p12", "p13"]),
     ("Utiliser l'IA de façon critique", ["p13"]),
 ]
-COLS = ["perso", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10", "p11", "p12", "p13"]
+COLS = [
+    "perso",
+    "p2",
+    "p3",
+    "p4",
+    "p5",
+    "p6",
+    "p7",
+    "p8",
+    "p9",
+    "p10",
+    "p11",
+    "p12",
+    "p13",
+]
 COL_LABEL = {"perso": "Perso", **{c: c[1:] for c in COLS if c != "perso"}}
 REPO = {t[0]: t[4] for t in TIMELINE}
 
@@ -121,26 +260,47 @@ def timeline_svg():
     span = (d1 - d0).days
     x = lambda d: L + (d - d0).days / span * (W - L - R)
     y = lambda i: T + i * ((H - T - B) / (len(DOMAINS) - 1))
-    out = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-labelledby="tl-title tl-desc">',
-           '<title id="tl-title">Mes projets dans le temps, par domaine</title>',
-           '<desc id="tl-desc">Treize projets entre mai 2025 et octobre 2026, qui passent du tableur et du SQL '
-           'à la business intelligence, au machine learning puis à l\'IA générative.</desc>']
+    out = [
+        f'<svg viewBox="0 0 {W} {H}" role="img" aria-labelledby="tl-title tl-desc">',
+        '<title id="tl-title">Mes projets dans le temps, par domaine</title>',
+        '<desc id="tl-desc">Treize projets entre mai 2025 et octobre 2026, qui passent du tableur et du SQL '
+        "à la business intelligence, au machine learning puis à l'IA générative.</desc>",
+    ]
     for i, dom in enumerate(DOMAINS):
-        out.append(f'<line class="grid" x1="{L}" x2="{W - R}" y1="{y(i):.1f}" y2="{y(i):.1f}"/>')
-        out.append(f'<text class="dom" x="{L - 14}" y="{y(i) + 4:.1f}" text-anchor="end">{e(dom)}</text>')
-    for yy, mm, lab in [(2025, 6, "juin 2025"), (2025, 10, "oct. 2025"), (2026, 2, "fév. 2026"), (2026, 6, "juin 2026"), (2026, 10, "oct. 2026")]:
+        out.append(
+            f'<line class="grid" x1="{L}" x2="{W - R}" y1="{y(i):.1f}" y2="{y(i):.1f}"/>'
+        )
+        out.append(
+            f'<text class="dom" x="{L - 14}" y="{y(i) + 4:.1f}" text-anchor="end">{e(dom)}</text>'
+        )
+    for yy, mm, lab in [
+        (2025, 6, "juin 2025"),
+        (2025, 10, "oct. 2025"),
+        (2026, 2, "fév. 2026"),
+        (2026, 6, "juin 2026"),
+        (2026, 10, "oct. 2026"),
+    ]:
         xx = x(date(yy, mm, 1))
-        out.append(f'<line class="tick" x1="{xx:.1f}" x2="{xx:.1f}" y1="{T - 8}" y2="{H - B + 8}"/>')
-        out.append(f'<text class="month" x="{xx:.1f}" y="{H - 14}" text-anchor="middle">{lab}</text>')
+        out.append(
+            f'<line class="tick" x1="{xx:.1f}" x2="{xx:.1f}" y1="{T - 8}" y2="{H - B + 8}"/>'
+        )
+        out.append(
+            f'<text class="month" x="{xx:.1f}" y="{H - 14}" text-anchor="middle">{lab}</text>'
+        )
     pts = sorted(TIMELINE, key=lambda t: t[1])
-    path = " ".join(f"{'M' if k == 0 else 'L'}{x(t[1]):.1f},{y(t[2]):.1f}" for k, t in enumerate(pts))
+    path = " ".join(
+        f"{'M' if k == 0 else 'L'}{x(t[1]):.1f},{y(t[2]):.1f}"
+        for k, t in enumerate(pts)
+    )
     out.append(f'<path class="trail" d="{path}"/>')
     for pid, d, dom, label, repo in pts:
         cls = "pt feat" if pid in {f["id"] for f in FEATURED} else "pt"
         href = f"#{pid}" if pid in {f["id"] for f in FEATURED} else f"{GH}{repo}"
         name = "projet personnel" if pid == "perso" else f"projet {pid[1:]}"
-        out.append(f'<a href="{href}" class="{cls}"><title>{e(label)} ({name})</title>'
-                   f'<circle cx="{x(d):.1f}" cy="{y(dom):.1f}" r="{8 if "feat" in cls else 6}"/></a>')
+        out.append(
+            f'<a href="{href}" class="{cls}"><title>{e(label)} ({name})</title>'
+            f'<circle cx="{x(d):.1f}" cy="{y(dom):.1f}" r="{8 if "feat" in cls else 6}"/></a>'
+        )
     out.append("</svg>")
     return "\n".join(out)
 
@@ -179,10 +339,15 @@ def others_html():
 
 
 def matrix_html():
-    head = "".join(f'<th scope="col"><a href="{GH}{REPO[c]}">{COL_LABEL[c]}</a></th>' for c in COLS)
+    head = "".join(
+        f'<th scope="col"><a href="{GH}{REPO[c]}">{COL_LABEL[c]}</a></th>' for c in COLS
+    )
     body = []
     for skill, projs in SKILLS:
-        cells = "".join(f'<td>{"<span class=\"dot\" aria-label=\"oui\"></span>" if c in projs else ""}</td>' for c in COLS)
+        cells = "".join(
+            f"<td>{'<span class="dot" aria-label="oui"></span>' if c in projs else ''}</td>"
+            for c in COLS
+        )
         body.append(f'<tr><th scope="row">{e(skill)}</th>{cells}</tr>')
     return f'<table class="matrix"><caption>Projets qui mobilisent chaque compétence (numéro du projet OpenClassrooms)</caption><thead><tr><th scope="col">Compétence</th>{head}</tr></thead><tbody>{"".join(body)}</tbody></table>'
 
@@ -371,7 +536,7 @@ PAGE = f"""<!doctype html>
 </div>
 <dl class="facts">
 <dt>Poste</dt><dd>Data analyst, Client Insights EMEA, Louis Vuitton</dd>
-<dt>Formation</dt><dd>Data Analyst, OpenClassrooms (titre RNCP niveau 6)</dd>
+<dt>Formation</dt><dd>Master 2 International Management, IPAG Business School / Data Analysis Bootcamp, Le Wagon (titre RNCP niveau 6) / Data Analyst, OpenClassrooms (titre RNCP niveau 6)</dd>
 <dt>Outils</dt><dd>BigQuery (SQL), Power BI (DAX), Python, Dataiku, dbt</dd>
 <dt>Ville</dt><dd>Paris</dd>
 <dt>Code</dt><dd><a href="https://github.com/lcabart21">github.com/lcabart21</a></dd>
@@ -379,13 +544,14 @@ PAGE = f"""<!doctype html>
 </div>
 </section>
 </main>
-<footer><div class="wrap">Leo Cabart, 2026. Les projets OpenClassrooms reposent sur des données publiques ou fictives fournies pour l'exercice.</div></footer>
+<footer><div class="wrap">Leo Cabart (2026) / Note : Les projets OpenClassrooms reposent sur des données publiques ou fictives fournies pour l'exercice.</div></footer>
 </body>
 </html>
 """
 
 if __name__ == "__main__":
     import sys
+
     out = sys.argv[1] if len(sys.argv) > 1 else "index.html"
     open(out, "w", encoding="utf-8").write(PAGE)
     print("written", out, len(PAGE))
